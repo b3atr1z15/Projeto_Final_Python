@@ -188,10 +188,8 @@ def abrir_tela_listagem():
 
     df = listar_receitas()
     
-    colunas_visiveis = ["nome", "ingredientes", "modo_preparo", "tempo", "dificuldade"]
-    tabela = ttk.Treeview(frame_tabela, columns=colunas_visiveis, show="headings", height=10)
-
-
+    tabela = ttk.Treeview(frame_tabela, columns=list(df.columns), show="headings", height=10)
+    tabela.pack(side="left", fill="both", expand=True)
 
     # FRAME DA IMAGEM
     frame_img = tk.Frame(lista, bg=COR_FUNDO)
@@ -229,21 +227,13 @@ def abrir_tela_listagem():
 
 
     # Configurar colunas
-    for col in colunas_visiveis:
+    for col in df.columns:
         tabela.heading(col, text=col)
-        tabela.column(col, width=150)
+        tabela.column(col, width=120)
 
     # Preencher tabela
     for _, row in df.iterrows():
-        tabela.insert("", tk.END, values=[
-             row["nome"],
-             row["ingredientes"],
-             row["modo_preparo"],
-             row["tempo"],
-             row["dificuldade"]
-    ],   tags=(str(row["id"]),)  
-    )
-
+        tabela.insert("", tk.END, values=list(row))
 
     # Scrollbar
     scrollbar = ttk.Scrollbar(frame_tabela, orient="vertical", command=tabela.yview)
@@ -274,7 +264,7 @@ def abrir_tela_listagem():
         
         item = item[0]
         dados = tabela.item(item, "values")
-        id_rec = tabela.item(item, "tags")[0]
+        id_rec = dados[0]
 
         confirmar = messagebox.askyesno("Confirmar", "Deseja realmente excluir esta receita?")
         if not confirmar:
