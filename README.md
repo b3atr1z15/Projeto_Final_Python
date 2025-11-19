@@ -4,6 +4,8 @@ Aplicação desktop desenvolvida em **Python**, utilizando **Tkinter** para inte
 Permite cadastrar, visualizar, editar, excluir e filtrar receitas — incluindo imagens carregadas por URL.
 
 ---
+##  Feito por:
+Beatriz C. Haberman Severo Alves
 
 ##  Funcionalidades
 
