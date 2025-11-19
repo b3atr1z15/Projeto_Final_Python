@@ -151,10 +151,7 @@ def abrir_tela_cadastro():
     cb_dif = ttk.Combobox(card, values=["Fácil", "Médio", "Difícil"], state="readonly")
     cb_dif.pack(pady=5)
 
-    tk.Label(card, text="Foto (URL)", font=("Arial", 11, "bold"), bg=COR_CARD).pack(anchor="w", padx=20)
-    e_foto = tk.Entry(card, width=40)
-    e_foto.insert()
-    e_foto.pack(pady=5)
+    
 
     def salvar():
         inserir_receita(
@@ -383,7 +380,7 @@ def abrir_tela_editar(dados):
             editar.destroy()
 
         botao_estilizado(card, "Salvar Alterações", salvar_edicao).pack(pady=20)
-        botao_estilizado(editar, "Voltar", editar.destroy).pack(pady=10)
+        
 
 
 
