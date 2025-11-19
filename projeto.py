@@ -151,9 +151,10 @@ def abrir_tela_cadastro():
     cb_dif = ttk.Combobox(card, values=["Fácil", "Médio", "Difícil"], state="readonly")
     cb_dif.pack(pady=5)
 
-    tk.Label(cadastro, text="Foto (URL)").pack()
-    e_foto = tk.Entry(cadastro, width=40)
-    e_foto.pack()
+    tk.Label(card, text="Foto (URL)", font=("Arial", 11, "bold"), bg=COR_CARD).pack(anchor="w", padx=20)
+    e_foto = tk.Entry(card, width=40)
+    e_foto.insert()
+    e_foto.pack(pady=5)
 
     def salvar():
         inserir_receita(
@@ -168,6 +169,8 @@ def abrir_tela_cadastro():
         cadastro.destroy()
 
     botao_estilizado(card, "Salvar Receita", salvar).pack(pady=20)
+    botao_estilizado(cadastro, "Voltar", cadastro.destroy).pack(pady=10)
+
 
 
 
@@ -312,6 +315,8 @@ def abrir_tela_listagem():
     botao_estilizado(frame_filtro, "Aplicar Filtros", aplicar_filtros).grid(row=2, column=0, pady=10, padx=5)
     botao_estilizado(frame_filtro, "Editar Receita", editar_receita).grid(row=2, column=1, pady=10, padx=5)
     botao_estilizado(frame_filtro, "Excluir Receita", excluir_receita).grid(row=2, column=2, pady=10, padx=5)
+    botao_estilizado(lista, "Voltar", lista.destroy).pack(pady=10)
+
 
 
 #tela de editar receita
@@ -378,6 +383,8 @@ def abrir_tela_editar(dados):
             editar.destroy()
 
         botao_estilizado(card, "Salvar Alterações", salvar_edicao).pack(pady=20)
+        botao_estilizado(editar, "Voltar", editar.destroy).pack(pady=10)
+
 
 
 
